@@ -1,5 +1,11 @@
 // Keep in step with SOURCES in app/sources.py (keys and short names).
-const SHORT = { tu: "TU", kode24: "kode24", vg: "VG", nrk: "NRK", reddit: "r/norge", ars: "Ars" };
+const SHORT = {
+  "tu": "TU", "kode24": "kode24", "digi": "Digi",
+  "vg": "VG", "nrk": "NRK", "reddit": "r/norge",
+  "e24": "E24", "energi": "Energi og Klima",
+  "ars": "Ars", "hn": "HN",
+  "phoronix": "Phoronix", "lwn": "LWN", "9to5linux": "9to5Linux",
+};
 const PAGE = 40;
 
 const $ = (id) => document.getElementById(id);

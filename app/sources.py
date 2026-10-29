@@ -18,12 +18,24 @@ class Source:
 
 # Keep in step with SOURCES in static/feed.js (names and order shown).
 SOURCES = [
+    # Norwegian tech
     Source("tu", "Teknisk Ukeblad", "https://www.tu.no/rss"),
     Source("kode24", "kode24", "https://rss.kode24.no/"),
+    Source("digi", "Digi.no", "https://www.digi.no/rss"),
+    # Norwegian news
     Source("vg", "VG", "https://www.vg.no/rss/feed"),
     Source("nrk", "NRK", "https://www.nrk.no/toppsaker.rss"),
     Source("reddit", "r/norge", "https://www.reddit.com/r/norge/.rss"),
+    # Economy and energy
+    Source("e24", "E24", "https://e24.no/rss2/"),
+    Source("energi", "Energi og Klima", "https://energiogklima.no/feed/"),
+    # International tech
     Source("ars", "Ars Technica", "https://feeds.arstechnica.com/arstechnica/index"),
+    Source("hn", "Hacker News", "https://hnrss.org/frontpage?points=100"),
+    # Linux
+    Source("phoronix", "Phoronix", "https://www.phoronix.com/rss.php"),
+    Source("lwn", "LWN", "https://lwn.net/headlines/rss"),
+    Source("9to5linux", "9to5Linux", "https://9to5linux.com/feed"),
 ]
 BY_KEY = {source.key: source for source in SOURCES}
 
@@ -160,6 +172,8 @@ def parse(xml: bytes) -> list[Item]:
             continue
         # Reddit's summary is "submitted by /u/x [link] [comments]" at the end
         summary = re.sub(r"\s*submitted by /u/\S+.*$", "", summary)
+        # Hacker News's is only links and counts, after any text of the post
+        summary = re.sub(r"\s*Article URL: \S+.*$", "", summary)
         result.append(Item(
             url=link.strip(),
             title=title[:500],

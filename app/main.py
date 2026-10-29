@@ -23,7 +23,7 @@ Base.metadata.create_all(engine)
 
 STATIC = Path(__file__).resolve().parent.parent / "static"
 # Most stories sent to the page
-LIMIT = 400
+LIMIT = 800
 
 
 @asynccontextmanager
