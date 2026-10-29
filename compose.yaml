@@ -1,0 +1,20 @@
+# Runs the feed on 127.0.0.1:8001 (sjekka has 8000). Put it behind
+# Cloudflare Access or similar: there is no login, and anyone who can reach
+# it can vote.
+services:
+  feed:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/data
+    ports:
+      - "127.0.0.1:8001:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: 0.5

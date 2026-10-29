@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <meta name="description" content="Nyhetene jeg leser, samlet på ett sted og sortert etter hva jeg liker.">
+    <meta name="theme-color" content="#0d0c0b">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preload" href="/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header class="top">
+        <a href="/" class="mark">feed</a>
+        <div class="top-tools">
+            <span class="status" id="refreshed" aria-live="polite"></span>
+            <button type="button" class="pill" id="refresh">Oppdater</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <p class="meta" id="today"></p>
+            <h1 id="greeting">Hei.</h1>
+            <p class="lede" id="lede">Henter dagens saker …</p>
+        </section>
+
+        <section class="explore" aria-labelledby="stories-heading">
+            <h2 class="visually-hidden" id="stories-heading">Saker</h2>
+            <div class="listbar">
+                <ul class="chips" id="sources" aria-label="Kilder"></ul>
+                <div class="listbar-tools">
+                    <div class="segmented" role="group" aria-label="Sortering">
+                        <button type="button" data-sort="best" aria-pressed="true">for deg</button>
+                        <button type="button" data-sort="new" aria-pressed="false">nyeste</button>
+                    </div>
+                </div>
+            </div>
+            <p class="notice error" id="error" role="alert" hidden></p>
+            <ol class="stories" id="stories"></ol>
+            <div class="more">
+                <button type="button" class="button" id="more" hidden>Vis flere</button>
+                <button type="button" class="reveal" id="toggle-hidden" hidden></button>
+            </div>
+        </section>
+
+        <section class="taste" aria-labelledby="taste-heading">
+            <h2 id="taste-heading">Hva liker du?</h2>
+            <p class="note" id="taste-note">Skriv med egne ord hva du vil lese mer og mindre av. Sammen med stemmene dine er det dette Gemini sorterer etter.</p>
+            <form id="interests">
+                <label class="visually-hidden" for="interests-text">Interessene dine</label>
+                <textarea id="interests-text" rows="4" maxlength="2000" placeholder="F.eks. programmering, KI, romfart, energi og norsk politikk. Mindre sport og kjendisstoff."></textarea>
+                <div class="actions">
+                    <button type="submit" class="button primary">Lagre <span class="arrow">→</span></button>
+                    <span class="status" id="interests-status" aria-live="polite"></span>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <span>Kilder: Teknisk Ukeblad, kode24, VG, NRK, r/norge og Ars Technica.</span>
+        <a href="https://tischbein.dev">tischbein.dev</a>
+    </footer>
+
+    <template id="story">
+        <li class="story">
+            <div class="story-body">
+                <p class="byline"><span class="source"></span><span class="dot" aria-hidden="true">·</span><time></time></p>
+                <h3><a target="_blank" rel="noopener noreferrer"></a></h3>
+                <p class="summary"></p>
+                <p class="reason"></p>
+            </div>
+            <img class="thumb" alt="" loading="lazy" referrerpolicy="no-referrer" hidden>
+            <div class="votes">
+                <button type="button" class="vote" data-vote="1" aria-pressed="false"><span aria-hidden="true">↑</span> Mer som dette</button>
+                <button type="button" class="vote" data-vote="-1" aria-pressed="false"><span aria-hidden="true">↓</span> Mindre som dette</button>
+            </div>
+        </li>
+    </template>
+
+    <script src="/feed.js"></script>
+</body>
+</html>
