@@ -1,6 +1,6 @@
 # Personal feed
 
-One reader's news feed: RSS/Atom from TU, kode24, VG, NRK, r/norge and Ars Technica, scored by Gemini against the reader's votes and interests. The README covers how sorting works and how to run it.
+One reader's news feed: RSS/Atom from 13 sources (Norwegian news and tech, economy and energy, international tech, Linux; see `SOURCES` in `app/sources.py`), scored by Gemini against the reader's votes and interests. The README covers how sorting works and how to run it.
 
 ## Commands
 

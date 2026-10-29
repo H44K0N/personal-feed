@@ -1,12 +1,12 @@
 # Personal feed
 
-Everything I read in a day on one page: Teknisk Ukeblad, kode24, VG, NRK, r/norge and Ars Technica. Gemini reads each new story and scores how likely I am to want it; stories that score low are folded away. Every story has **Mer som dette** and **Mindre som dette**, and those votes steer what comes next.
+Everything I read in a day on one page: Teknisk Ukeblad, kode24, Digi.no, VG, NRK, r/norge, E24, Energi og Klima, Ars Technica, Hacker News (front page, 100+ points), Phoronix, LWN and 9to5Linux. Gemini reads each new story and scores how likely I am to want it; stories that score low are folded away. Every story has **Mer som dette** and **Mindre som dette**, and those votes steer what comes next.
 
 It looks like [tischbein.dev](https://tischbein.dev) and [Sjekka](https://sjekka.tischbein.dev): Libron, the dark ink-and-champagne palette, hairline cards, pill buttons.
 
 ## How the sorting works
 
-1. **Fetching.** Every 20 minutes (and on the Oppdater button, at most every two minutes) the app reads all six feeds side by side. A feed that fails is struck through in the source list; the others carry on. Stories older than 14 days that nobody voted on are dropped.
+1. **Fetching.** Every 20 minutes (and on the Oppdater button, at most every two minutes) the app reads all the feeds side by side. A feed that fails is struck through in the source list; the others carry on. Stories older than 14 days that nobody voted on are dropped.
 2. **Gemini's read.** New stories are sent to Gemini in batches of 40, together with what you wrote under "Hva liker du?" and the last 40 stories you voted up and down. It gives each a score from 0 to 100 and one sentence on why, shown under the title. Once five more votes have come in, stories from the last 36 hours are read again.
 3. **Your votes, right away.** Words and sources from stories you vote up lift similar stories; those you vote down sink them. This happens the moment you vote, without waiting for Gemini, and is all there is without a Gemini key.
 4. **The order.** "For deg" sorts by score with a small penalty per hour of age, so yesterday's best gives way to today's. "Nyeste" is plain time order. Anything under 35 is folded away behind "Vis skjulte saker".

@@ -20,7 +20,7 @@ client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
 
 BATCH = 40
 # Most stories scored per refresh, to keep the bill small
-MAX_PER_RUN = 160
+MAX_PER_RUN = 240
 # Examples of each kind of vote shown to Gemini
 EXAMPLES = 40
 # Scored stories are scored again once this many votes have come in since,

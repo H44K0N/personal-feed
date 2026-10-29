@@ -98,4 +98,16 @@ def test_sources_match_the_page():
     with open("static/feed.js", encoding="utf-8") as script:
         text = script.read()
     for source in SOURCES:
-        assert f"{source.key}:" in text
+        assert f'"{source.key}":' in text
+
+
+def test_drops_hacker_news_link_list():
+    xml = b"""<rss><channel>
+    <item><title>Show HN: A thing</title><link>https://thing.example/</link>
+      <description>&lt;p&gt;I made a thing.&lt;/p&gt; &lt;hr&gt; &lt;p&gt;Article URL: https://thing.example/&lt;/p&gt; &lt;p&gt;Comments URL: https://news.ycombinator.com/item?id=1&lt;/p&gt; &lt;p&gt;Points: 120&lt;/p&gt;</description>
+      <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate></item>
+    <item><title>A link</title><link>https://link.example/</link>
+      <description>&lt;p&gt;Article URL: https://link.example/&lt;/p&gt; &lt;p&gt;Points: 300&lt;/p&gt;</description>
+      <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate></item>
+    </channel></rss>"""
+    assert [i.summary for i in parse(xml)] == ["I made a thing.", ""]
