@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The wordmark in short: "f." with the champagne full stop, as on Sjekka -->
+  <rect width="32" height="32" rx="7" fill="#0d0c0b"/>
+  <text x="9" y="23.5" font-family="Georgia, serif" font-weight="700" font-size="20" fill="#ece6dc">f</text>
+  <circle cx="22.5" cy="21.6" r="2.6" fill="#c9b48f"/>
+</svg>
